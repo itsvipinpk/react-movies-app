@@ -16,7 +16,7 @@ import Input from '@material-ui/core/Input';
 const TabContainer = function (props) {
 
     return (
-        <Typography component="div" style={{ padding: 0 }}>
+        <Typography component="div" style={{ padding: 0}}>
             {props.children}
         </Typography>
     );
@@ -60,19 +60,20 @@ class Header extends Component {
                 </header>
                 <Modal className="container-modal" ariaHideApp={false} isOpen={this.state.modalIsOpen} contentLabel="Login"
                     onRequestClose={this.closeModalHandler}>
-                    <Tabs value={this.state.value} onChange={this.onChangeHandler}>
+                    <Tabs className="tabs" value={this.state.value} onChange={this.onChangeHandler}>
                         <Tab label="Login"></Tab>
                         <Tab label="Register" ></Tab>
                     </Tabs>
-                    <TableContainer>
+                    <TableContainer className="cont-tabs">
                         <FormControl required>
                             <InputLabel htmlFor='username'>userName</InputLabel>
                             <Input id="username" type="text"></Input>
-                        </FormControl>
+                        </FormControl><br/><br/>
                         <FormControl required>
                             <InputLabel htmlFor='password'>passWord</InputLabel>
                             <Input id="password" type="password"></Input>
-                        </FormControl>
+                        </FormControl><br/><br/>
+                        <Button variant="contained" color="primary">LOGIN</Button>
                     </TableContainer>
                 </Modal>
 
