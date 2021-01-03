@@ -6,7 +6,21 @@ import logo from "../../assets/logo.svg";
 import Modal from "react-modal";
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import { TableContainer } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
+import Input from '@material-ui/core/Input';
 
+
+const TabContainer = function (props) {
+
+    return (
+        <Typography component="div" style={{ padding: 0 }}>
+            {props.children}
+        </Typography>
+    );
+}
 
 class Header extends Component {
 
@@ -15,7 +29,7 @@ class Header extends Component {
         super();
         this.state = {
             modalIsOpen: false,
-            value : 0
+            value: 0
 
         };
     }
@@ -30,9 +44,10 @@ class Header extends Component {
     }
 
     onChangeHandler = (event, value) => {
-            this.setState({value});
+        this.setState({ value });
 
     }
+
     render() {
 
         return (
@@ -43,12 +58,22 @@ class Header extends Component {
                         <Button variant="contained" color="default" onClick={this.openModalHandler}>Log In</Button>
                     </div>
                 </header>
-                <Modal ariaHideApp={false} isOpen={this.state.modalIsOpen} contentLabel="Login"
+                <Modal className="container-modal" ariaHideApp={false} isOpen={this.state.modalIsOpen} contentLabel="Login"
                     onRequestClose={this.closeModalHandler}>
-                    <Tabs value={this.state.value} onChange ={this.onChangeHandler}>
+                    <Tabs value={this.state.value} onChange={this.onChangeHandler}>
                         <Tab label="Login"></Tab>
                         <Tab label="Register" ></Tab>
                     </Tabs>
+                    <TableContainer>
+                        <FormControl required>
+                            <InputLabel htmlFor='username'>userName</InputLabel>
+                            <Input id="username" type="text"></Input>
+                        </FormControl>
+                        <FormControl required>
+                            <InputLabel htmlFor='password'>passWord</InputLabel>
+                            <Input id="password" type="password"></Input>
+                        </FormControl>
+                    </TableContainer>
                 </Modal>
 
             </div>
