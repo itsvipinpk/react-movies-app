@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
+import PropTypes from 'prop-types';
 
 
 const TabContainer = function (props) {
@@ -21,7 +22,9 @@ const TabContainer = function (props) {
         </Typography>
     );
 }
-
+TabContainer.propTypes = {
+    children: PropTypes.node.isRequired
+}
 class Header extends Component {
 
     constructor() {
@@ -64,7 +67,8 @@ class Header extends Component {
                         <Tab label="Login"></Tab>
                         <Tab label="Register" ></Tab>
                     </Tabs>
-                    <TableContainer className="cont-tabs">
+                    {this.state.value ===0 && 
+                    <TabContainer className="cont-tabs">
                         <FormControl required>
                             <InputLabel htmlFor='username'>userName</InputLabel>
                             <Input id="username" type="text"></Input>
@@ -74,7 +78,7 @@ class Header extends Component {
                             <Input id="password" type="password"></Input>
                         </FormControl><br/><br/>
                         <Button variant="contained" color="primary">LOGIN</Button>
-                    </TableContainer>
+                    </TabContainer>}
                 </Modal>
 
             </div>
