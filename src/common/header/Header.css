@@ -34,6 +34,12 @@
 .tabs{
     margin-bottom: 20px;
 }
-.cont-tabs{
-    text-align: center;
+.dispNone {
+    display: none;
+}
+.dispBlock {
+    display: block;
+}
+.red{
+    color: red;
 }
