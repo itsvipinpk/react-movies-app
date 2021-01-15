@@ -1,4 +1,4 @@
-let moviesData = [
+let movieData = [
     {
         "id": "M1",
         "title": "The Godfather",
@@ -256,4 +256,4 @@ let moviesData = [
     }
 ]
 
-export default moviesData;
+export default movieData;
