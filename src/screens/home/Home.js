@@ -4,6 +4,8 @@ import Header from "../../common/header/Header";
 import { withStyles } from '@material-ui/core/styles';
 import movieData from '../../common/movieData';
 import genres from '../../common/genres';
+import artists from '../../common/artists';
+
 
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
@@ -18,6 +20,7 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
+import TextField from '@material-ui/core/TextField';
 
 
 
@@ -64,7 +67,8 @@ class Home extends Component {
         super();
         this.state = {
             movieName: "",
-            genres: []
+            genres: [],
+            artists: []
         }
     }
     movieNameChangeHandler = event => {
@@ -73,7 +77,11 @@ class Home extends Component {
     }
 
     genreSelectHandler = event => {
-        this.setState({genres: event.target.value});
+        this.setState({ genres: event.target.value });
+
+    }
+    artistSelectHandler = event => {
+        this.setState({ artists: event.target.value });
 
     }
 
@@ -141,6 +149,49 @@ class Home extends Component {
                                         }
 
                                     </Select>
+                                </FormControl>
+
+
+                                <FormControl className={classes.formControl}>
+                                    <InputLabel htmlFor="select-multipleartist-checkbox">Artists</InputLabel>
+                                    <Select
+                                        multiple
+                                        input={<Input id="select-multipleartist-checkbox" />}
+                                        renderValue={selected => selected.join(',')}
+                                        value={this.state.artists}
+                                        onChange={this.artistSelectHandler}>
+                                        <MenuItem value="0">None</MenuItem>
+                                        {
+                                            artists.map(
+                                                artist => (
+                                                    <MenuItem key={artist.id} value={artist.first_name + " " + artist.last_name}>
+                                                        <Checkbox checked={this.state.artists.indexOf(artist.first_name + " " + artist.last_name) > -1}></Checkbox>
+                                                        <ListItemText primary={artist.first_name + " " + artist.last_name}></ListItemText>
+                                                    </MenuItem>
+
+                                                )
+                                            )
+                                        }
+
+                                    </Select>
+                                </FormControl>
+                                <FormControl className={classes.formControl}>
+                                        <TextField
+                                        id = "releaseDateStart"
+                                        label= "Release Date Start"
+                                        type = "date"
+                                        defaultValue=""
+                                        InputLabelProps={{shrink : true}}>
+                                        </TextField>
+                                </FormControl>
+                                <FormControl className={classes.formControl}>
+                                        <TextField
+                                        id = "releaseDateTo"
+                                        label= "Release Date To"
+                                        type = "date"
+                                        defaultValue=""
+                                        InputLabelProps={{shrink : true}}>
+                                        </TextField>
                                 </FormControl>
                             </CardContent>
                         </Card>
