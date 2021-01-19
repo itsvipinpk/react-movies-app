@@ -3,6 +3,9 @@ import Header from "../../common/header/Header";
 import './Details.css';
 import movieData from '../../common/movieData';
 
+import Typography from '@material-ui/core/Typography';
+
+
 
 
 class Details extends Component {
@@ -14,7 +17,7 @@ class Details extends Component {
         }
     }
 
-    componentDidMount () {
+    componentWillMount () {
 
         let currentState = this.state;
         currentState.movie = movieData.filter((mov)=>{
@@ -26,15 +29,22 @@ class Details extends Component {
 
     render() {
 
+        let movie = this.state.movie;
+
         return (
             <div className="details">
                 <Header />
                 <div className="flex-containerDetails">
                     <div className="leftDetails">
-
+                        <img src={movie.poster_url} alt={movie.title}></img>
                     </div>
                     <div className="middleDetails">
-
+                    <div>
+                            <Typography variant="headline" component="h2">{movie.title}</Typography>
+                        </div>
+                        <div>
+                            <Typography><span className="bold">Genre: </span>{movie.genres.join(', ')}</Typography>
+                        </div>
                     </div>
                     <div className="rightDetails">
 
