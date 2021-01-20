@@ -98,7 +98,6 @@ class Header extends Component {
         this.state.email === "" ? this.setState({emailRequired:"dispBlock"}) : this.setState({emailRequired:"dispNone"});
         this.state.regpassword === "" ? this.setState({regpasswordRequired:"dispBlock"}) : this.setState({regpasswordRequired:"dispNone"});
         this.state.contactnumber === "" ? this.setState({contactnumberRequired:"dispBlock"}) : this.setState({contactnumberRequired:"dispNone"});
-
     }
 
 
