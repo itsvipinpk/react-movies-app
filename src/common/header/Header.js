@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDom from 'react-dom';
 import "./Header.css"
 import Button from '@material-ui/core/Button';
 import "./Header.css";
@@ -13,6 +14,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
 import PropTypes from 'prop-types';
 import FormHelperText from '@material-ui/core/FormHelperText';
+import BookShow from "../../screens/bookshow/BookShow";
 
 
 const TabContainer = function (props) {
@@ -123,6 +125,10 @@ class Header extends Component {
     inputContactNumberChangeHandler = (e) => {
         this.setState({contactnumber  : e.target.value   });
     }
+    bookshowHandler = () => {
+
+        ReactDom.render(<BookShow />, document.getElementById('root'));
+    }
 
     render() {
 
@@ -133,6 +139,13 @@ class Header extends Component {
                     <div className='login-button'>
                         <Button variant="contained" color="default" onClick={this.openModalHandler}>Log In</Button>
                     </div>
+                    {
+                        this.props.showBookShowButton === "true" ?
+                    
+                    <div className="bookshow-button">
+                        <Button variant="contained" color="primary" onClick={this.bookshowHandler}>BOOK SHOW</Button>
+                    </div> : ""
+                    }
                 </header>
                 <Modal className="container-modal" ariaHideApp={false} isOpen={this.state.modalIsOpen} contentLabel="Login"
                     onRequestClose={this.closeModalHandler}>
